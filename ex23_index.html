@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web_ex23</title>
+    <style>
+        /* 整體背景與字體設定 */
+        body {
+            background-color: #f6f6f6; /* 設計稿標註的 header bg color */
+            font-family: 'Roboto', 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            margin: 0;
+            color: #2f2f2f;
+        }
+
+        /* 圖片容器 */
+        .container {
+            position: relative;
+            width: 496px; /* 設計稿指定寬度 */
+            border: 1px solid #eaeaea;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* 圖片樣式 */
+        .main-image {
+            width: 100%;
+            display: block;
+        }
+
+        /* 「查看資訊」按鈕：精確執行 h22, R8 指示 */
+        .info-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            height: 22px;             /* h22 */
+            border-radius: 8px;       /* R8 */
+            background-color: #ffffff;
+            border: 1px solid #2f2f2f; /* outline 1px #2f2f2f */
+            color: #2f2f2f;           /* Color: #2f2f2f */
+            font-size: 13px;          /* Roboto Regular 13px */
+            padding: 0 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .info-btn:hover {
+            background-color: #f0f0f0;
+            border-color: #000;
+        }
+
+        /* 詳細資訊區塊：預設隱藏 */
+        #info-panel {
+            display: none; 
+            width: 496px;
+            background-color: #ffffff;
+            border: 1px solid #cfddff; /* 使用設計稿的 list select 邊框色 */
+            margin-top: 10px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 13px;
+        }
+
+        .info-row {
+            margin: 8px 0;
+            display: flex;
+        }
+
+        .label {
+            color: #707070;
+            width: 80px;
+        }
+
+        .value {
+            color: #2f2f2f; /* 使用設計稿提到的文字藍色 */
+            font-family: "Roboto Regular";
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="image.png" alt="Preview Image" class="main-image">
+        
+        <button class="info-btn" onclick="toggleInfo()" id="toggleBtn">查看資訊</button>
+    </div>
+
+    <div id="info-panel">
+        <div class="info-row">
+            <span class="label">修改日期：</span>
+            <span class="value">2026/04/27</span>
+        </div>
+        <div class="info-row">
+            <span class="label">檔案類型：</span>
+            <span class="value">PNG Image</span>
+        </div>
+        <div class="info-row">
+            <span class="label">檔案大小：</span>
+            <span class="value">466.97 KB</span>
+        </div>
+        <div class="info-row">
+            <span class="label">路徑：</span>
+            <span class="value">/DesignCenter/A_Image2PDF/sample/image.png</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleInfo() {
+            const panel = document.getElementById('info-panel');
+            const btn = document.getElementById('toggleBtn');
+
+            if (panel.style.display === 'none' || panel.style.display === '') {
+                panel.style.display = 'block';
+                btn.textContent = '收起資訊';
+            } else {
+                panel.style.display = 'none';
+                btn.textContent = '查看資訊';
+            }
+        }
+    </script>
+
+</body>
+</html>
